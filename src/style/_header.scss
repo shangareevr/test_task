@@ -1,0 +1,148 @@
+.header{
+  &__wrapper{
+    position: relative;
+    width: 100%;
+    background-color: rgba(180, 127, 246, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 63px 54.63px 57px;
+  }
+  &__nav{
+    display: flex;
+    gap: 60px;
+    padding-left: 100px;
+    a{
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1em;
+      &:first-child{
+        font-weight: 600;
+        position: relative;
+        &::after{
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 1px;
+          background-color: $colorWhite;
+        }
+      }
+    }
+  }
+  &__burger{
+    width: 43.37px;
+    height: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span{
+      width: 100%;
+      height: 3px;
+      background-color: $colorWhite;
+      transition: all ease-in-out 0.6s;
+      @include transform;
+      &:after{
+        position: relative;
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $colorWhite;
+        bottom: -9px;
+        @include transform;
+      }
+      &:before{
+        position: relative;
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $colorWhite;
+        top: -12px;
+        @include transform;
+      }
+    }
+    &.active{
+      span{
+        background: none;
+        &:after{
+          bottom: 3px;
+          transform: rotate(45deg);
+        }
+        &:before{
+          top: 0;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+  @media(max-width:700px){
+    &__wrapper{
+      padding: 25px;
+    }
+    &__nav{
+      padding-left: 0;
+      a{
+        font-size: 20px;
+      }
+    }
+    &__burger{
+      width: 30px;
+      height: 20px;
+      z-index: 5;
+    }
+  }
+}
+.burger__menu{
+  position: absolute;
+  transform: translateY(-100%);
+  top: 0;
+  left: 0;
+  padding: 33px 94.5px 67px 64.5px;
+  background-color: rgba(166, 201, 255, 1);
+  width: fit-content;
+  @include transform;
+  z-index: 2;
+  ul{
+    display: flex;
+    flex-direction: column;
+    gap: 39px;
+    a{
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 45px;
+    }
+  }
+  button{
+    margin-left: 30px;
+    margin-top:55px;
+    background-color: rgba(255, 75, 75, 1);
+    padding: 15px 25px;
+    color: $colorWhite;
+    border-radius: 25px;
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+  &.active{
+transform: translateY(0);
+  }
+  @media(max-width:700px){
+    padding: 20px;
+    ul{
+      gap: 15px;
+      a{
+        font-size: 20px;
+      }
+    }
+    button{
+      border-radius: 10px;
+      margin-left: 0;
+      margin-top: 15px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
+}
